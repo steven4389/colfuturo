@@ -5,21 +5,24 @@ const nodemailer = require('nodemailer');
 
 
 router.post('/sendEmail', async (req, res)=>{
+     
+     let texto= "este correo fue enviado desde " + req.body.destinatario + " seleccionando el idioma " + req.body.idioma +
+     " con el asunto " + req.body.carta
+     console.log(texto)  
 
-    
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'usuer@gmail.com',
-          pass: '*******,'
+          user: 'estivetg@gmail.com',
+          pass: 'Alejo65452589,'
         }
       });
       
       var mailOptions = {
         from: 'estivetg@gmail.com',
         to: 'estivetg@gmail.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
+        subject: 'correo de colfuturo',
+        text: texto
       };
       
       transporter.sendMail(mailOptions, function(error, info){
@@ -34,7 +37,7 @@ router.post('/sendEmail', async (req, res)=>{
    const SendEmail = new sendEmail(req.body);
    await SendEmail.save();
    res.json({
-        'status': "email send"
+        'status': "email enviado correctamente!"
    })
 });
 

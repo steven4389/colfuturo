@@ -17,8 +17,11 @@ export class CartasPatrocinioComponent implements OnInit {
   }
 
   onSubmit(form){
-    alert("correo enviado correctamente!")
-    this.SendEmailService.saveRegistro(this.email).subscribe()
+    
+    this.SendEmailService.saveRegistro(this.email).subscribe(res=>{
+      console.log(res)  
+      alert(res.status)
+    });
   }
 
   carta(param){
