@@ -1,0 +1,147 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h3>Cartas de patrocinio</h3>
+        <hr>
+        <p style="color: gray">Aca podra generar sus cartas y certificados necesarios para cumplir con los tramites asociados a su 
+            proyecto. Para generar el documento seleccione el idioma, elija el tipo de documento y finalice
+            pulsando el link generar documento.
+        </p>
+            <form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm)">
+                <label style="color: red; font-weight:bold">A quien va dirigida</label>
+                <br>
+                <div class="form-check">
+                        <label class="form-check-label">
+                          <input  type="radio" 
+                                  class="form-check-input" 
+                                  value="a todas las personas"
+                                  name="destinatario"                                  
+                                  #destinatario="ngModel"
+                                  [(ngModel)]="email.destinatario" >
+                                  <span style="color:gray">A quien pueda interezar</span> 
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input  type="radio" class="form-check-input"
+                                  value="estivetg@gmail.com"
+                                  name="destinatario"                                  
+                                  #destinatario="ngModel"
+                                  [(ngModel)]="email.destinatario" 
+                                  ><span style="color:gray">A esta persona</span>  
+                        </label>
+                      </div>
+                     <br>
+                <label style="color: red; font-weight:bold">¿En que idioma?</label>
+                <br>
+                <div class="form-check">
+                        <label class="form-check-label">
+                          <input  type="radio" class="form-check-input" 
+                                  name="idioma"
+                                  value="Español"
+                                  #idioma="ngModel"
+                                  [(ngModel)]="email.idioma"><span style="color:gray">Español</span>     
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input  type="radio" 
+                                  class="form-check-input" 
+                                  value="Inglés"
+                                  name="idioma"
+                                  #idioma="ngModel"
+                                  [(ngModel)]="email.idioma"><span style="color:gray">Inglés</span>
+                        </label>
+                      </div>
+                      <div class="form-check disabled">
+                        <label class="form-check-label">
+                          <input  type="radio" 
+                                  class="form-check-input" 
+                                  value="Francés"
+                                  name="idioma"
+                                  #idioma="ngModel"
+                                  [(ngModel)]="email.idioma"  ><span style="color:gray">Francés</span>
+                        </label>
+                      </div>
+                      <div class="form-check">
+                            <label class="form-check-label">
+                              <input  type="radio" 
+                                      class="form-check-input" 
+                                      value="Italiano"
+                                      name="idioma"
+                                      #idioma="ngModel"
+                                      [(ngModel)]="email.idioma"><span style="color:gray">Italiano</span>
+                            </label>
+                          </div>
+                          <div class="form-check disabled">
+                            <label class="form-check-label">
+                              <input  type="radio" 
+                                      class="form-check-input" 
+                                      name="idioma" 
+                                      value="Alemán"
+                                      #idioma="ngModel"
+                                      [(ngModel)]="email.idioma"><span style="color:gray">Alemán</span>
+                            </label>
+                          </div>
+                          <br>
+                <label style="color: red; font-weight:bold">¿Cual carta?</label> 
+                <br>
+                <div style="height: 12rem; width: 50%; overflow-y: scroll;">
+                        <table  class="table table-striped">
+                                <tbody id="tabla">
+                                  <tr>
+                                    <td>Embajada con presupuesto</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Embajada con presupuesto')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Embajada y otros sin presupuesto</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Embajada y otros sin presupuesto')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Universidades y otros</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Universidades y otros')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Universidades y otros (EUR)</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Universidades y otros (EUR)')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Extension de estudios</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Extension de estudios')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Certificacion bancos</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Certificacion bancos')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                   <tr>
+                                    <td>Universidades y otros (CAD)</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Universidades y otros (CAD)')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Universidades y otros (GBP)</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Universidades y otros (GBP)')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Universidades y otros (AUD)</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Universidades y otros (AUD)')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Practica Profesional</td>
+                                    <td>Ver</td>
+                                    <td><button (click)="carta('Practica Profesional')" class="btn btn-sm" type="submit" value="Enviar" style="margin-right: 15px; background:red; color:#fff;" cdkFocusInitial>Generar RTF</button></td>
+                                  </tr>
+                                </tbody>
+                        </table>
+                </div>
+                
+            </form>
+    </div>
+</div>
