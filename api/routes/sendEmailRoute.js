@@ -2,13 +2,36 @@ const express = require('express');
 const router = express.Router();
 const sendEmail= require('../models/sendEmail')
 const nodemailer = require('nodemailer');
+const pdf = require('html-pdf');
+
+var options = {
+  "format": 'A4',
+  "header": {
+      "height": "60px"
+  },
+  "footer": {
+      "height": "22mm"
+  },
+  "base": 'file://Users/midesweb/carpeta_base/'
+ };
 
 
 router.post('/sendEmail', async (req, res)=>{
      
-     let texto= "este correo fue enviado desde " + req.body.destinatario + " seleccionando el idioma " + req.body.idioma +
-     " con el asunto " + req.body.carta
-     console.log(texto)  
+    
+      var contenido = `
+      <h1>Destinatario: ${req.body.destinatario}</h1> 
+      <p>Idioma ${req.body.idioma}</p>
+      <p>${req.body.carta}</p>
+      `;
+
+      await pdf.create(contenido, options).toFile('./salida.pdf', function(err, res) {
+          if (err){
+              console.log(err);
+          } else {
+              console.log(res);
+          }
+      });
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -20,9 +43,15 @@ router.post('/sendEmail', async (req, res)=>{
       
       var mailOptions = {
         from: 'estivetg@gmail.com',
-        to: 'estivetg@gmail.com',
+        to: req.body.destinatario,
         subject: 'correo de colfuturo',
-        text: texto
+        text: "Archivo PDF",
+        attachments:[
+          {
+            path: '../api/salida.pdf' //stream this file
+          }
+        ]
+      
       };
       
       transporter.sendMail(mailOptions, function(error, info){

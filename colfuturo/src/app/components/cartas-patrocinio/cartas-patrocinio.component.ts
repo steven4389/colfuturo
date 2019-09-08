@@ -20,6 +20,7 @@ export class CartasPatrocinioComponent implements OnInit {
     
     this.SendEmailService.saveRegistro(this.email).subscribe(res=>{
       console.log(res)  
+      
       alert(res.status)
     });
   }
